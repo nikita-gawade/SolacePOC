@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Summit Bank | Email Template Configuration</title>
+<style>
+:root{--navy:#0d294b;--navy2:#173e6b;--blue:#2764a1;--pale:#edf5ff;--red:#d82943;--ink:#1b2e48;--muted:#718198;--line:#dce5ef;--bg:#f3f6fb;--white:#fff;--green:#218354}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 Inter,Segoe UI,Arial,sans-serif}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.app-header{height:64px;background:linear-gradient(105deg,#0b2341,#12375f);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 24px;gap:20px}
+.brand{display:flex;align-items:center;gap:11px;font-size:19px;font-weight:750;letter-spacing:-.3px}
+.brand-mark{height:36px;width:36px;display:grid;place-items:center;border-radius:10px;background:var(--red);font-weight:900;font-size:19px}
+.brand small{display:block;font-size:10px;color:#bdcde0;font-weight:400;letter-spacing:.2px}
+.header-right{display:flex;align-items:center;gap:18px;color:#d8e3f0;font-size:12px}
+.search{border:1px solid #4b6787;border-radius:7px;padding:9px 12px;min-width:250px;color:#d8e3f0}
+.layout{display:grid;grid-template-columns:205px minmax(0,1fr);min-height:calc(100vh - 64px)}
+.sidebar{background:linear-gradient(180deg,#0d294b,#0a203a);color:#d7e2ef;padding:20px 12px;display:flex;flex-direction:column;gap:5px}
+.nav-item{display:flex;gap:12px;align-items:center;padding:12px;border-radius:7px;color:#d7e2ef;text-decoration:none;font-size:13px}
+.nav-item.active{background:#1b426d;color:#fff;border-left:3px solid var(--red);padding-left:9px}
+.nav-icon{width:20px;text-align:center;font-size:16px}
+.security{margin-top:auto;border:1px solid #385473;border-radius:9px;padding:14px;font-size:11px;line-height:1.6;color:#bdcde0}
+.security strong{display:block;color:#fff;margin:7px 0}
+.main{padding:24px;min-width:0}
+.page-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:20px}
+.eyebrow{font-size:10px;font-weight:750;letter-spacing:1.1px;color:#7b8ba0;margin-bottom:8px}
+h1{margin:0;color:#102d50;font-size:27px;letter-spacing:-.7px}
+.subtitle{margin:7px 0 0;color:var(--muted);font-size:13px}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn{border:1px solid #cbd7e5;border-radius:7px;background:#fff;color:#29415f;padding:10px 14px;font-weight:700;font-size:12px}
+.btn:hover{background:#f2f6fb}
+.btn.primary{background:var(--navy2);border-color:var(--navy2);color:#fff}
+.btn.primary:hover{background:#245382}
+.btn.red{border-color:#f0c9cf;color:#b6253b}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:18px}
+.stat{background:#fff;border:1px solid var(--line);border-radius:9px;padding:13px 15px}
+.stat-label{font-size:10px;font-weight:750;color:#8290a3;letter-spacing:.45px}
+.stat-value{font-size:22px;font-weight:800;color:#183c64;margin-top:5px}
+.stat-note{font-size:10px;color:#8996a7;margin-top:3px}
+.columns{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(320px,.85fr);gap:16px;align-items:start}
+.panel{background:#fff;border:1px solid var(--line);border-radius:10px;min-width:0;overflow:visible}
+.panel-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 17px;border-bottom:1px solid #e9eef4}
+.section-title{display:flex;align-items:center;gap:10px}
+.step{width:28px;height:28px;display:grid;place-items:center;border-radius:50%;background:var(--navy);color:#fff;font-weight:800}
+h2{font-size:14px;margin:0;color:#193452}
+.section-sub{font-size:11px;color:#8795a8;margin-top:2px}
+.panel-body{padding:17px}
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px 13px}
+.field{min-width:0}
+.full{grid-column:1/-1}
+.label-row{display:flex;align-items:center;gap:6px;margin-bottom:7px;min-height:17px}
+label{font-size:11px;font-weight:750;color:#30445e}
+.required{color:var(--red)}
+.help{position:relative;display:inline-grid;place-items:center;width:16px;height:16px;border:1px solid #aebed0;border-radius:50%;color:#647991;font-size:10px;font-weight:800;cursor:help;outline:none;flex-shrink:0}
+.tooltip{position:absolute;z-index:20;left:50%;bottom:calc(100% + 10px);transform:translateX(-50%);width:230px;padding:10px 12px;border-radius:7px;background:#102b4b;color:#fff;font-size:11px;line-height:1.5;font-weight:450;box-shadow:0 8px 24px #0b234130;display:none;pointer-events:none}
+.tooltip:after{content:"";position:absolute;left:calc(50% - 5px);top:100%;border:5px solid transparent;border-top-color:#102b4b}
+.help:hover .tooltip,.help:focus .tooltip,.help:focus-visible .tooltip,.field:focus-within .help .tooltip{display:block}
+input,select,textarea{width:100%;border:1px solid #d4dfeb;border-radius:6px;background:#fff;color:#233b58;outline:none;transition:border-color .15s,box-shadow .15s}
+input,select{height:39px;padding:0 11px}
+textarea{padding:10px 11px;resize:vertical;line-height:1.55}
+input::placeholder,textarea::placeholder{color:#a0adbc}
+input:focus,select:focus,textarea:focus{border-color:#4b83bc;box-shadow:0 0 0 3px #e9f2fc}
+input[aria-invalid=true],select[aria-invalid=true],textarea[aria-invalid=true]{border-color:var(--red)}
+.field-note{font-size:10px;color:#8996a7;margin-top:5px}
+.error{display:none;font-size:10px;color:#bd293c;margin-top:5px}
+.error.show{display:block}
+.divider{border:0;border-top:1px solid #e9eef4;margin:20px 0}
+.recipients{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.editor-toolbar{display:flex;gap:5px;flex-wrap:wrap;align-items:center;padding:7px;background:#f7f9fc;border:1px solid #d9e3ee;border-bottom:0;border-radius:7px 7px 0 0}
+.tool{border:1px solid #e0e7ef;background:#fff;color:#435873;border-radius:4px;padding:5px 8px;font-size:11px}
+.tool:hover{background:#edf4fc}
+#htmlBody{font:11px/1.6 Consolas,Monaco,monospace;min-height:220px;border-radius:0 0 7px 7px}
+.editor-foot{display:flex;justify-content:space-between;gap:10px;margin-top:6px;color:#8795a7;font-size:10px}
+.security-note{display:flex;gap:9px;background:#f7f9fc;border:1px solid #e8eef5;border-radius:7px;padding:11px;margin-top:16px;font-size:10px;color:#77879c;line-height:1.6}
+.bottom-actions{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border-top:1px solid #e9eef4;margin-top:17px;padding-top:15px}
+.feedback{display:none;margin-top:12px;padding:11px 12px;border-radius:6px;font-size:11px;line-height:1.5}
+.feedback.show{display:block}.feedback.ok{background:#eaf7ef;color:#206b44;border:1px solid #cbe8d5}.feedback.bad{background:#fff0f1;color:#a82b3a;border:1px solid #f0d0d5}
+.preview-panel{position:sticky;top:14px}
+.preview-top{padding:15px;border-bottom:1px solid #e9eef4}
+.preview-headline{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.live{font-size:10px;color:#238052;display:flex;align-items:center;gap:5px}
+.live:before{content:"";width:7px;height:7px;border-radius:50%;background:#36b779}
+.preview-meta{display:grid;gap:8px;margin-top:14px;font-size:10px;overflow-wrap:anywhere}
+.preview-meta div{display:grid;grid-template-columns:40px minmax(0,1fr);gap:8px}
+.preview-meta strong{color:#465b75}
+.mail-preview{margin:13px;border:1px solid #e0e7ef;border-radius:7px;overflow:hidden;background:#fff}
+.email-brand{padding:14px 15px;font-size:16px;font-weight:800;color:#173b63;border-bottom:1px solid #edf0f5}
+.email-brand span{display:block;font-size:9px;color:#8492a5;font-weight:450}
+.email-banner{padding:23px 16px;background:linear-gradient(115deg,#102c4e,#286092);color:#fff;font-size:20px;font-weight:800}
+.email-content{padding:18px 15px;min-height:185px;font-size:12px;line-height:1.65;overflow-wrap:anywhere}
+.email-content img{max-width:100%;height:auto}
+.email-content table{max-width:100%}
+.preview-info{margin:13px;padding:11px;background:#edf5ff;border:1px solid #d6e8fc;border-radius:6px;color:#53749a;font-size:10px;line-height:1.55}
+.summary{margin:13px;border:1px solid #dfe7f0;border-radius:7px;overflow:hidden}
+.summary h3{font-size:12px;margin:0;padding:11px 12px;background:#f7f9fc;border-bottom:1px solid #e7edf4}
+.summary dl{margin:0;padding:12px;display:grid;gap:10px}
+.summary dt{font-size:10px;color:#8795a8}
+.summary dd{margin:2px 0 0;font-size:11px;color:#304660;overflow-wrap:anywhere}
+.footer{text-align:center;color:#98a4b3;font-size:10px;padding:18px 0 2px}
+@media(max-width:1100px){.layout{grid-template-columns:170px minmax(0,1fr)}.main{padding:18px}.columns{grid-template-columns:minmax(0,1fr)}.preview-panel{position:static}.preview-panel .mail-preview{max-width:600px}.recipients{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.app-header{padding:0 14px}.header-right .search{display:none}.layout{grid-template-columns:1fr}.sidebar{display:none}.main{padding:15px 11px}.page-top{flex-direction:column}h1{font-size:23px}.stats{gap:7px}.stat{padding:10px}.stat-value{font-size:18px}.form-grid,.recipients{grid-template-columns:1fr}.full{grid-column:auto}.panel-body{padding:12px}.panel-head{padding:12px}.columns{gap:12px}}
+</style>
+</head>
+<body>
+<header class="app-header">
+  <div class="brand"><div class="brand-mark">S</div><div>Summit Bank<small>Secure Today. Stronger Tomorrow.</small></div></div>
+  <div class="header-right"><div class="search">⌕ &nbsp; Search templates, departments…</div><span>● &nbsp; Jordan Dunn &nbsp; Admin</span></div>
+</header>
+<div class="layout">
+  <aside class="sidebar">
+    <a class="nav-item" href="#"><span class="nav-icon">⌂</span>Dashboard</a>
+    <a class="nav-item active" href="#"><span class="nav-icon">✉</span>Email Templates</a>
+    <a class="nav-item" href="#"><span class="nav-icon">➤</span>Campaigns</a>
+    <a class="nav-item" href="#"><span class="nav-icon">♙</span>Recipients</a>
+    <a class="nav-item" href="#"><span class="nav-icon">▥</span>Reports</a>
+    <a class="nav-item" href="#"><span class="nav-icon">⚙</span>Settings</a>
+    <div class="security">♙<strong>Bank-grade security</strong>Use approved recipients and content. Protect customer information and follow organisational policy.<br><br><span style="color:#65d19a">●</span> Secure workspace</div>
+  </aside>
+  <main class="main">
+    <div class="page-top">
+      <div><div class="eyebrow">TEMPLATE MANAGEMENT / NEW TEMPLATE</div><h1>Create New Template</h1><p class="subtitle">Configure your organisational email template. Hover or focus the ⓘ icons for field guidance.</p></div>
+      <div class="actions"><button class="btn" type="button" id="resetBtn">Reset</button><button class="btn primary" type="button" id="saveTop">▣ Save Template</button></div>
+    </div>
+    <section class="stats">
+      <div class="stat"><div class="stat-label">EXPECTED DAILY VOLUME</div><div class="stat-value" id="dailyMetric">2,500</div><div class="stat-note">Emails per business day</div></div>
+      <div class="stat"><div class="stat-label">PEAK DAILY CAPACITY</div><div class="stat-value" id="peakMetric">8,000</div><div class="stat-note">Maximum expected daily load</div></div>
+      <div class="stat"><div class="stat-label">CONFIGURATION STATUS</div><div class="stat-value" id="statusMetric" style="font-size:17px">In progress</div><div class="stat-note" id="statusNote">Complete required fields to validate</div></div>
+    </section>
+    <div class="columns">
+      <section class="panel">
+        <div class="panel-head"><div class="section-title"><span class="step">1</span><div><h2>Template Configuration</h2><div class="section-sub">Identity, ownership and delivery capacity</div></div></div><span style="font-size:10px;color:#b52b3e">* Required</span></div>
+        <div class="panel-body">
+          <form id="templateForm" novalidate>
+            <div class="form-grid">
+              <div class="field"><div class="label-row"><label for="templateName">Template name <span class="required">*</span></label><span class="help" tabindex="0" aria-label="Help for template name">i<span class="tooltip" role="tooltip">Enter a unique, descriptive name so teams can identify this email use case, such as “Daily Transaction Summary”.</span></span></div><input id="templateName" maxlength="100" placeholder="e.g. Daily Transaction Summary" required><div class="error" id="templateNameError">Enter a template name.</div></div>
+              <div class="field"><div class="label-row"><label for="department">Department <span class="required">*</span></label><span class="help" tabindex="0" aria-label="Help for department">i<span class="tooltip" role="tooltip">Choose the business unit that owns this template and is responsible for its content and use.</span></span></div><select id="department" required><option value="">Select department</option><option>Retail Banking</option><option>Corporate Banking</option><option>Finance</option><option>Operations</option><option>Risk &amp; Compliance</option><option>Cards &amp; Payments</option><option>Customer Support</option><option>Information Technology</option><option>Human Resources</option><option>Other</option></select><div class="error" id="departmentError">Select a department.</div></div>
+              <div class="field"><div class="label-row"><label for="owner">Business owner</label><span class="help" tabindex="0" aria-label="Help for business owner">i<span class="tooltip" role="tooltip">Enter the responsible team, role or approved corporate email address for questions and content changes.</span></span></div><input id="owner" placeholder="e.g. Finance Operations" maxlength="100"></div>
+              <div class="field"><div class="label-row"><label for="dailyVolume">Daily volume (emails/day) <span class="required">*</span></label><span class="help" tabindex="0" aria-label="Help for daily volume">i<span class="tooltip" role="tooltip">Enter the typical total number of emails this template is expected to send per business day. Use a whole number of zero or more.</span></span></div><input id="dailyVolume" type="number" min="0" max="100000000" step="1" placeholder="e.g. 2500" required><div class="error" id="dailyVolumeError">Enter a non-negative whole number.</div></div>
+              <div class="field"><div class="label-row"><label for="peakVolume">Peak volume (emails/day) <span class="required">*</span></label><span class="help" tabindex="0" aria-label="Help for peak volume">i<span class="tooltip" role="tooltip">Enter the highest expected daily email volume during busy periods, such as month-end. It must be at least the daily volume.</span></span></div><input id="peakVolume" type="number" min="0" max="100000000" step="1" placeholder="e.g. 8000" required><div class="error" id="peakVolumeError">Peak volume must be a whole number equal to or greater than daily volume.</div></div>
+            </div>
+            <hr class="divider">
+            <div class="section-title" style="margin-bottom:15px"><span class="step">2</span><div><h2>Email Delivery Details</h2><div class="section-sub">Recipients, subject and message content</div></div></div>
+            <div class="recipients">
+              <div class="field"><div class="label-row"><label for="toField">To — primary recipients <span class="required">*</span></label><span class="help" tabindex="0" aria-label="Help for To recipients">i<span class="tooltip" role="tooltip">Enter one or more valid recipient email addresses, separated by commas or semicolons. These are the primary recipients.</span></span></div><input id="toField" placeholder="customer@example.com" required><div class="field-note">Visible to other recipients.</div><div class="error" id="toFieldError">Enter at least one valid email address.</div></div>
+              <div class="field"><div class="label-row"><label for="ccField">CC — carbon copy</label><span class="help" tabindex="0" aria-label="Help for CC">i<span class="tooltip" role="tooltip">Optional. Add people who need visibility. CC addresses are visible to the other recipients.</span></span></div><input id="ccField" placeholder="manager@example.com"><div class="field-note">Optional; visible to recipients.</div><div class="error" id="ccFieldError">Check CC email addresses.</div></div>
+              <div class="field"><div class="label-row"><label for="bccField">BCC — blind carbon copy</label><span class="help" tabindex="0" aria-label="Help for BCC">i<span class="tooltip" role="tooltip">Optional. Add approved recipients who should receive a copy without their addresses being disclosed to other recipients.</span></span></div><input id="bccField" placeholder="archive@example.com"><div class="field-note">Optional; addresses are hidden from other recipients.</div><div class="error" id="bccFieldError">Check BCC email addresses.</div></div>
+            </div>
+            <div class="field" style="margin-top:16px"><div class="label-row"><label for="subjectField">Email subject <span class="required">*</span></label><span class="help" tabindex="0" aria-label="Help for email subject">i<span class="tooltip" role="tooltip">Use a concise subject that describes the email. Placeholders such as {{CustomerName}} work only if your sending service supports them.</span></span></div><input id="subjectField" maxlength="200" placeholder="e.g. Your daily transaction summary" required><div class="error" id="subjectFieldError">Enter an email subject.</div></div>
+            <div class="field" style="margin-top:16px"><div class="label-row"><label for="htmlBody">HTML email body <span class="required">*</span></label><span class="help" tabindex="0" aria-label="Help for HTML email body">i<span class="tooltip" role="tooltip">Paste email HTML here. Prefer inline CSS and approved placeholders. Scripts and active content should not be used in email templates.</span></span><span style="margin-left:auto;color:#275b90;background:#edf5ff;padding:4px 7px;border-radius:4px;font-size:10px;font-weight:750">HTML SOURCE</span></div>
+              <div class="editor-toolbar"><button class="tool" type="button" data-insert="&lt;h2&gt;Heading&lt;/h2&gt;">H2</button><button class="tool" type="button" data-insert="&lt;p&gt;Your message here.&lt;/p&gt;">¶ Paragraph</button><button class="tool" type="button" data-insert="&lt;strong&gt;Important text&lt;/strong&gt;">B Bold</button><button class="tool" type="button" data-insert="&lt;a href=&quot;https://example.com&quot;&gt;View details&lt;/a&gt;">↗ Link</button><button class="tool" type="button" id="copyHtml" style="margin-left:auto">Copy HTML</button></div>
+              <textarea id="htmlBody" rows="13" spellcheck="false" required></textarea><div class="editor-foot"><span>Email-compatible HTML · Scripts are not executed in preview</span><span id="charCount">0 characters</span></div><div class="error" id="htmlBodyError">Enter the HTML email body.</div>
+            </div>
+            <div class="security-note"><span style="font-size:16px;color:#2e6398">◈</span><span><strong style="color:#536982">Security reminder.</strong> Use approved recipients and authorised content. Avoid embedding credentials, account secrets or unnecessary customer data. Previewing does not send an email.</span></div>
+            <div class="bottom-actions"><div class="actions"><button class="btn" type="button" id="resetBottom">Reset form</button><button class="btn red" type="button" id="validateBtn">✓ Validate</button></div><div class="actions"><button class="btn primary" type="button" id="saveBottom">▣ Save Template →</button></div></div>
+            <div class="feedback" id="feedback" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+      </section>
+      <aside class="panel preview-panel">
+        <div class="preview-top"><div class="preview-headline"><div class="section-title"><span style="font-size:17px;color:#2c6094">▧</span><h2>Live Email Preview</h2></div><span class="live">Updates live</span></div></div>
+        <div style="padding:0 15px"><div class="preview-meta">
+          <div><strong>From</strong><span>communications@company.com</span></div>
+          <div><strong>To</strong><span id="previewTo">Recipient addresses</span></div>
+          <div id="previewCcRow" style="display:none"><strong>CC</strong><span id="previewCc"></span></div>
+          <div id="previewBccRow" style="display:none"><strong>BCC</strong><span id="previewBcc"></span></div>
+          <div><strong>Subject</strong><span id="previewSubject">Your email subject will appear here</span></div>
+        </div></div>
+        <div class="mail-preview"><div class="email-brand">◆ Summit Bank<span>Secure Today. Stronger Tomorrow.</span></div><div class="email-banner" id="previewBanner">Your Email<br>Template</div><div class="email-content" id="previewBody"><p style="color:#8795a8">Your rendered email body will appear here as you edit the HTML.</p></div></div>
+        <div class="summary"><h3>▤ &nbsp; Template Summary</h3><dl><div><dt>Template name</dt><dd id="sumName">Not named yet</dd></div><div><dt>Department</dt><dd id="sumDept">Not selected</dd></div><div><dt>Daily / peak volume</dt><dd id="sumVolume">Not configured</dd></div><div><dt>Business owner</dt><dd id="sumOwner">Not assigned</dd></div></dl></div>
+        <div class="preview-info">ⓘ &nbsp; This is a local preview only. Dynamic placeholders, mail-client compatibility, delivery, and recipient authorisation must be tested in your sending service.</div>
+      </aside>
+    </div>
+    <div class="footer">Summit Bank · Internal communication systems · Front-end prototype</div>
+  </main>
+</div>
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const fieldIds = ['templateName','department','owner','dailyVolume','peakVolume','toField','ccField','bccField','subjectField','htmlBody'];
+  const starterHtml = `<div style="font-family:Arial,sans-serif;color:#24364b;line-height:1.6;max-width:600px;margin:0 auto">
+  <div style="background:#173b63;padding:22px;color:#fff"><h2 style="margin:0;font-size:21px">Daily Transaction Summary</h2></div>
+  <div style="padding:24px 20px">
+    <p>Dear {{CustomerName}},</p>
+    <p>Please find your daily transaction summary below.</p>
+    <p><strong>Report date:</strong> {{ReportDate}}</p>
+    <p>For assistance, please contact our authorised support team.</p>
+    <p>Regards,<br>Banking Operations</p>
+  </div>
+  <div style="padding:14px 20px;background:#f4f6fa;color:#6b7b90;font-size:11px">This is an automated communication. Please do not reply with confidential information.</div>
+</div>`;
+  const defaults = {templateName:'Q1 Financial Update',department:'Finance',owner:'Finance Operations',dailyVolume:'2500',peakVolume:'8000',toField:'customers@example.com, support@example.com',ccField:'manager@example.com',bccField:'audit@example.com',subjectField:'Q1 2025 Financial Update – Key Highlights',htmlBody:starterHtml};
+  fieldIds.forEach(id => { $(id).value = defaults[id] || ''; });
+  const splitEmails = value => value.split(/[;,]+/).map(x => x.trim()).filter(Boolean);
+  const validEmail = value => /^[^\s@,;<>]+@[^\s@,;<>]+\.[^\s@,;<>]+$/.test(value);
+  const num = id => $(id).value.trim() === '' ? null : Number($(id).value);
+  function safePreviewHtml(html) {
+    return html
+      .replace(/<\s*(script|iframe|object|embed|form|input|button|video|audio|meta|base|link)\b[^>]*>[\s\S]*?<\s*\/\s*\1\s*>/gi,'')
+      .replace(/<\s*(script|iframe|object|embed|form|input|button|video|audio|meta|base|link)\b[^>]*\/?\s*>/gi,'')
+      .replace(/\s(on[a-z]+)\s*=\s*("[^"]*"|'[^']*'|[^\s>]+)/gi,'')
+      .replace(/\s(href|src)\s*=\s*(["'])\s*javascript:[\s\S]*?\2/gi,' $1="#"');
+  }
+  function updatePreview() {
+    $('dailyMetric').textContent = num('dailyVolume') === null ? '—' : num('dailyVolume').toLocaleString();
+    $('peakMetric').textContent = num('peakVolume') === null ? '—' : num('peakVolume').toLocaleString();
+    $('previewTo').textContent = $('toField').value.trim() || 'Recipient addresses';
+    $('previewCc').textContent = $('ccField').value.trim();
+    $('previewBcc').textContent = $('bccField').value.trim();
+    $('previewCcRow').style.display = $('ccField').value.trim() ? 'grid' : 'none';
+    $('previewBccRow').style.display = $('bccField').value.trim() ? 'grid' : 'none';
+    $('previewSubject').textContent = $('subjectField').value.trim() || 'Your email subject will appear here';
+    $('previewBanner').textContent = $('templateName').value.trim() || 'Your Email Template';
+    const html = $('htmlBody').value.trim();
+    $('previewBody').innerHTML = html ? safePreviewHtml(html) : '<p style="color:#8795a8">Your rendered email body will appear here as you edit the HTML.</p>';
+    $('charCount').textContent = $('htmlBody').value.length.toLocaleString() + ' characters';
+    $('sumName').textContent = $('templateName').value.trim() || 'Not named yet';
+    $('sumDept').textContent = $('department').value || 'Not selected';
+    $('sumVolume').textContent = (num('dailyVolume') === null ? '—' : num('dailyVolume').toLocaleString()) + ' / ' + (num('peakVolume') === null ? '—' : num('peakVolume').toLocaleString()) + ' emails/day';
+    $('sumOwner').textContent = $('owner').value.trim() || 'Not assigned';
+    if ($('statusMetric').textContent === 'Validated' || $('statusMetric').textContent === 'Ready to save') {
+      $('statusMetric').textContent = 'In progress';
+      $('statusNote').textContent = 'Values changed; validate again';
+    }
+  }
+  function setError(id, message, show) {
+    const input = $(id), error = $(id + 'Error');
+    if (error) { error.textContent = message; error.classList.toggle('show', show); }
+    if (input) input.setAttribute('aria-invalid', show ? 'true' : 'false');
+  }
+  function validate() {
+    const daily = num('dailyVolume'), peak = num('peakVolume');
+    const checks = [
+      ['templateName', !!$('templateName').value.trim(), 'Enter a template name.'],
+      ['department', !!$('department').value, 'Select a department.'],
+      ['dailyVolume', daily !== null && Number.isInteger(daily) && daily >= 0 && daily <= 100000000, 'Enter a non-negative whole number.'],
+      ['peakVolume', peak !== null && Number.isInteger(peak) && peak >= 0 && peak <= 100000000 && daily !== null && peak >= daily, 'Peak volume must be a whole number equal to or greater than daily volume.'],
+      ['toField', splitEmails($('toField').value).length > 0 && splitEmails($('toField').value).every(validEmail), 'Enter at least one valid email address.'],
+      ['ccField', splitEmails($('ccField').value).every(validEmail), 'Check CC email addresses.'],
+      ['bccField', splitEmails($('bccField').value).every(validEmail), 'Check BCC email addresses.'],
+      ['subjectField', !!$('subjectField').value.trim(), 'Enter an email subject.'],
+      ['htmlBody', !!$('htmlBody').value.trim(), 'Enter the HTML email body.']
+    ];
+    const issues = [];
+    checks.forEach(([id, ok, message]) => { setError(id, message, !ok); if (!ok) issues.push({id,message}); });
+    const cc = new Set(splitEmails($('ccField').value).map(x => x.toLowerCase()));
+    if (splitEmails($('bccField').value).some(x => cc.has(x.toLowerCase()))) {
+      setError('bccField', 'An address appears in both CC and BCC. Review recipient lists.', true);
+      if (!issues.some(x => x.id === 'bccField')) issues.push({id:'bccField',message:'An address appears in both CC and BCC.'});
+    }
+    if (issues.length) {
+      $('statusMetric').textContent = 'Needs review';
+      $('statusNote').textContent = issues.length + ' item(s) to fix';
+      showFeedback('Please review: ' + issues.map(x => x.message).join(' '), false);
+      $(issues[0].id).focus();
+      return false;
+    }
+    $('statusMetric').textContent = 'Validated';
+    $('statusNote').textContent = 'Required fields passed front-end checks';
+    showFeedback('Validation passed in this prototype. Production use still requires server-side validation and authorisation.', true);
+    return true;
+  }
+  function showFeedback(message, ok) {
+    const el = $('feedback');
+    el.textContent = message;
+    el.className = 'feedback show ' + (ok ? 'ok' : 'bad');
+  }
+  function resetForm() {
+    fieldIds.forEach(id => { $(id).value = defaults[id] || ''; setError(id, '', false); });
+    $('statusMetric').textContent = 'In progress';
+    $('statusNote').textContent = 'Complete required fields to validate';
+    $('feedback').className = 'feedback';
+    updatePreview();
+  }
+  fieldIds.forEach(id => { $(id).addEventListener('input', updatePreview); $(id).addEventListener('change', updatePreview); });
+  document.querySelectorAll('[data-insert]').forEach(button => button.addEventListener('click', () => {
+    const textarea = $('htmlBody');
+    const start = textarea.selectionStart, end = textarea.selectionEnd;
+    textarea.setRangeText(button.dataset.insert, start, end, 'end');
+    textarea.focus(); updatePreview();
+  }));
+  $('validateBtn').addEventListener('click', validate);
+  $('saveTop').addEventListener('click', save);
+  $('saveBottom').addEventListener('click', save);
+  function save() {
+    if (!validate()) return;
+    $('statusMetric').textContent = 'Ready to save';
+    $('statusNote').textContent = 'Front-end checks passed';
+    showFeedback('This prototype does not save to a database. Connect a backend API to persist the template securely.', true);
+  }
+  $('resetBtn').addEventListener('click', resetForm);
+  $('resetBottom').addEventListener('click', resetForm);
+  $('copyHtml').addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText($('htmlBody').value);
+      showFeedback('HTML source copied to clipboard.', true);
+    } catch {
+      $('htmlBody').focus(); $('htmlBody').select();
+      showFeedback('Select and copy the HTML source manually; clipboard access was unavailable.', false);
+    }
+  });
+  updatePreview();
+})();
+</script>
+</body>
+</html>
